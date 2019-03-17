@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data Structures 2D Array</title>
+
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div style="width: 100%;float: left;">
+            <h1 class="text-center">Data Structures Array 2D</h1>
+            <h4>Array 1</h4>
+            <div id="box-container">
+            </div>
+            <div class="mt-10">
+                <div class="display-inline f-l">
+                    <button onclick="insertIntoArray(0)">Insert</button>
+                    <button onclick="showToggler('create-box')">Create Array</button>
+                    <button onclick="showToggler('update-box')">Update</button>
+                    <button onclick="showToggler('delete-box')">Delete</button>
+                    <button onclick="showToggler('search-box')">Find</button>
+                    <button onclick="rotateLeft(0)">Rotate Left</button>
+                    <button onclick="rotateRight(0)">Rotate Right</button>
+                    <button onclick="showToggler('swap-row-box')">Swap Row</button>
+                    <button onclick="showToggler('swap-col-box')">Swap Col</button>
+                    <div class="mt-10" id="update-box" style="display: none;">
+                        <input type="number" name="upd-row" placeholder="row" id="upd-row" class="w-70">
+                        <input type="number" name="upd-col" placeholder="col" id="upd-col" class="w-70">
+                        <input type="number" name="upd-col" placeholder="number" id="upd-num" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="updateArray(0,'upd')">Save</button>
+                    </div>
+                    <div class="mt-10" id="create-box" style="display: none;">
+                        <input type="number" name="rows" placeholder="rows" id="create-row" class="w-70">
+                        <input type="number" name="col" placeholder="cols" id="create-col" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="createArray(0)">Create</button>
+                    </div>
+                    <div class="mt-10" id="swap-row-box" style="display: none;">
+                        <input type="number" name="row" placeholder="row # 1" id="swap-row1" class="w-70"> by
+                        <input type="number" name="col" placeholder="row # 2" id="swap-row2" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="swapRow(0,'swap')">Swap</button>
+                    </div>
+                    <div class="mt-10" id="swap-col-box" style="display: none;">
+                        <input type="number" name="swap-col-r1" placeholder="row # 1" id="swap-col-r1" class="w-70">
+                        <input type="number" name="swap-col-c1" placeholder="col # 1" id="swap-col-c1" class="w-70"> by
+                        <input type="number" name="swap-col-r2" placeholder="row # 2" id="swap-col-r2" class="w-70">
+                        <input type="number" name="swap-col-c2" placeholder="col # 2" id="swap-col-c2" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="swapCol(0,'swapRow')">Swap</button>
+                    </div>
+                    <div class="mt-10" id="delete-box" style="display: none;">
+                        <input type="number" name="row" placeholder="row" id="dlt-row" class="w-70">
+                        <input type="number" name="col" placeholder="col" id="dlt-col" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="deleteFromArray(0, 'dlt')">Save</button>
+                    </div>
+                    <div class="mt-10" id="search-box" style="display: none;">
+                        <input type="number" name="index" placeholder="row" id="srch-row" class="w-70">
+                        <input type="number" name="index" placeholder="col" id="srch-col" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="searchInArray(0,'srch')">Search</button>
+                    </div>
+                </div>
+                <div class="display-inline f-r">
+                    <h2>Statistics</h2>
+                    <table id="t-main">
+                        <tr>
+                            <th>State</th>
+                            <th>Numbers</th>
+                        </tr>
+                        <tr>
+                            <td>Size</td>
+                            <td><span id="arrayLength"></span></td>
+                        </tr>
+                        <tr>
+                            <td>IsEmpty</td>
+                            <td><span id="isArrayEmpty"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td><span id="arrtype"></span></td>
+                        </tr>
+                        <tr>
+                            <td>IsIdentity</td>
+                            <td><span id="isIdentical"></span></td>
+                        </tr>
+                        <tr>
+                            <td>IsZero</td>
+                            <td><span id="IsZero"></span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <h4>Array 2</h4>
+            <div id="box-container1">
+            </div>
+            <div class="mt-10">
+                <div class="display-inline f-l">
+                    <button onclick="insertIntoArray(1)">Insert</button>
+                    <button onclick="showToggler('create-box1')">Create Array</button>
+                    <button onclick="showToggler('update-box1')">Update</button>
+                    <button onclick="showToggler('delete-box1')">Delete</button>
+                    <button onclick="showToggler('search-box1')">Linear Search</button>
+                    <div class="mt-10" id="update-box1" style="display: none;">
+                        <input type="number" name="upd-row" placeholder="row" id="upd-row1" class="w-70">
+                        <input type="number" name="upd-col" placeholder="col" id="upd-col1" class="w-70">
+                        <input type="number" name="upd-col" placeholder="number" id="upd-num1" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="updateArray(1,'upd')">Save</button>
+                    </div>
+                    <div class="mt-10" id="create-box1" style="display: none;">
+                        <input type="number" name="rows" placeholder="rows" id="create-row1" class="w-70">
+                        <input type="number" name="rows" placeholder="cols" id="create-col1" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="createArray(1)">Create</button>
+                    </div>
+                    <div class="mt-10" id="delete-box1" style="display: none;">
+                        <input type="number" name="row" placeholder="row" id="dlt-row1" class="w-70">
+                        <input type="number" name="col" placeholder="col" id="dlt-col1" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="deleteFromArray(1, 'dlt')">Save</button>
+                    </div>
+                    <div class="mt-10" id="search-box1" style="display: none;">
+                        <input type="number" name="index" placeholder="row" id="srch-row1" class="w-70">
+                        <input type="number" name="index" placeholder="col" id="srch-col1" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="searchInArray(1,'srch')">Search</button>
+                    </div>
+                </div>
+                <div class="display-inline f-r">
+                    <h2>Statistics</h2>
+                    <table id="t-main">
+                        <tr>
+                            <th>State</th>
+                            <th>Numbers</th>
+                        </tr>
+                        <tr>
+                            <td>Size</td>
+                            <td><span id="arrayLength1"></span></td>
+                        </tr>
+                        <tr>
+                            <td>IsEmpty</td>
+                            <td><span id="isArrayEmpty1"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td><span id="arrtype1"></span></td>
+                        </tr>
+                        <tr>
+                            <td>IsIdentity</td>
+                            <td><span id="isIdentical1"></span></td>
+                        </tr>
+                        <tr>
+                            <td>IsZero</td>
+                            <td><span id="IsZero1"></span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>

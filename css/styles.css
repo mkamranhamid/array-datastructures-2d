@@ -1,0 +1,92 @@
+.container {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.display-inline {
+    display: inline;
+}
+
+.f-r {
+    float: right;
+}
+
+.f-l {
+    float: left;
+}
+
+/* Table Start */
+
+#t-main {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#t-main td, #t-main th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#t-main tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#t-main tr:hover {
+    background-color: #ddd;
+}
+
+#t-main th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Table End */
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-10 input {
+    width: 79px;
+    text-indent: 5px;
+}
+
+.box {
+    background: #4CAF50;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
+    color: #fff;
+}
+
+.box div {
+    line-height: 3em;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 35px;
+    margin: 0 auto;
+}
+
+.search-border {
+    border: 4px solid #000
+}
