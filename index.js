@@ -32,6 +32,9 @@ var statsConfig = {
         'arrtype': 'arrtype',
         'isIdentical': 'isIdentical',
         'IsZero': 'IsZero',
+        'IsAddible': 'IsAddible',
+        'IsMultiplicable': 'IsMultiplicable',
+        'IsSubtractable': 'IsSubtractable',
     },
     '1': {
         'arrayLength': 'arrayLength1',
@@ -39,6 +42,9 @@ var statsConfig = {
         'arrtype': 'arrtype1',
         'isIdentical': 'isIdentical1',
         'IsZero': 'IsZero1',
+        'IsAddible': 'IsAddible1',
+        'IsMultiplicable': 'IsMultiplicable1',
+        'IsSubtractable': 'IsSubtractable1',
     }
 }
 var size = {
@@ -53,6 +59,9 @@ function arrayInit(arr, box, indx) {
     let arrtype = document.getElementById(statsConfig[indx].arrtype);
     let isIdentical = document.getElementById(statsConfig[indx].isIdentical);
     let IsZero = document.getElementById(statsConfig[indx].IsZero);
+    let IsAddible = document.getElementById(statsConfig[0].IsAddible);
+    let IsMultiplicable = document.getElementById(statsConfig[0].IsMultiplicable);
+    let IsSubtractable = document.getElementById(statsConfig[0].IsSubtractable);
     let arraySize = calculateArrayLength(arr);
     size[indx] = arraySize;
     arrayLength.innerText = `${arraySize.rows},${arraySize.cols}`;
@@ -60,6 +69,9 @@ function arrayInit(arr, box, indx) {
     arrtype.innerText = arrtypeCalculate(arraySize);
     isIdentical.innerText = isMatrixIdentity(arr, arrtypeCalculate(arraySize));
     IsZero.innerText = isMatrixZero(arr, arrtypeCalculate(arraySize));
+    IsAddible.innerText = addableToArray2();
+    IsMultiplicable.innerText = multiplicableToArray2();
+    IsSubtractable.innerText = subtractableToArray2();
 
     createBoxes(arr, box);
 }
@@ -383,18 +395,29 @@ function swapCol(indx, key) {
     arrayInit(main[indx], config[indx], indx);
     showToggler(appconfig[indx][key][4]);
 }
-
-
-/* **Schema** */
-/* 
-    {
-        arrs:[arr1,arr2,arr3,...];   //arr1=[1,2,3,4]
+function addableToArray2() {
+    if (main[0].length > 0 && main[1].length > 0) {
+        if ((size[0].rows == size[1].rows) && (size[0].cols == size[1].cols)) {
+            return true;
+        }
     }
-*/
+    return false;
+}
 
-/* **Merge{arr1,arr2}** */
-/* 
-    {
-        arrs:[arr1,arr3,...];
+function subtractableToArray2() {
+    if (main[0].length > 0 && main[1].length > 0) {
+        if ((size[0].rows == size[1].rows) && (size[0].cols == size[1].cols)) {
+            return true;
+        }
     }
-*/
+    return false;
+}
+
+function multiplicableToArray2() {
+    if (main[0].length > 0 && main[1].length > 0) {
+        if (size[0].cols == size[1].rows) {
+            return true;
+        }
+    }
+    return false;
+}

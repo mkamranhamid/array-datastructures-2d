@@ -90,3 +90,8 @@
 .search-border {
     border: 4px solid #000
 }
+
+.hide {
+    position: fixed;
+    left: 9999px;
+}
