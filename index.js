@@ -101,6 +101,10 @@ function insertIntoArray(indx) {
 }
 
 function updateArray(indx, key) {
+    if (main[indx].length == 0) {
+        alert('Either Row or Column not exist !!')
+        return;
+    }
     let row = document.getElementById(appconfig[indx][key][0]).value;
     let col = document.getElementById(appconfig[indx][key][1]).value;
     let num = document.getElementById(appconfig[indx][key][2]).value;
@@ -131,10 +135,10 @@ function updateArray(indx, key) {
 
 function ifIndexExist(arr, row, col) {
     let exist = { row: false, col: false };
-    if (arr.length >= row) {
+    if ((arr.length - 1) >= row) {
         exist['row'] = true;
     }
-    if (arr[0].length >= col) {
+    if ((arr[0] && arr[0].length - 1) >= col) {
         exist['col'] = true;
     }
     return (exist.row && exist.col);
@@ -363,6 +367,10 @@ function swapRow(indx, key) {
     let row2 = document.getElementById(appconfig[indx][key][1]).value;
     row1 = parseInt(row1) - 1;
     row2 = parseInt(row2) - 1;
+    if ((row1 > main[indx].length - 1) && (row2 > main[indx].length - 1)) {
+        alert('Either Row # 1 or Row # 2 is not valid !!');
+        return;
+    }
     let localMainArr = main[indx].slice();
     let swap1 = localMainArr[row1];
     let swap2 = localMainArr[row2];
@@ -382,6 +390,10 @@ function swapCol(indx, key) {
     col1 = parseInt(col1) - 1;
     row2 = parseInt(row2) - 1;
     col2 = parseInt(col2) - 1;
+    if (!ifIndexExist(main[indx], row1, col1) || !ifIndexExist(main[indx], row2, col2)) {
+        alert('Either Row or Column not valid !!');
+        return;
+    }
     let localMainArr = main[indx].slice();
     let swap1 = localMainArr[row1].slice();
     let swap2 = localMainArr[row2].slice();
@@ -420,4 +432,63 @@ function multiplicableToArray2() {
         }
     }
     return false;
+}
+function checkForUpperBound(arr) {
+    let upperBound = true;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i][i + 1] == 0) {
+            upperBound = false;
+            break;
+        }
+        for (let j = 0; j < arr[i].length; j++) {
+            if ((j != i) && j != (i + 1)) {
+                if (arr[i][j] != 0) {
+                    upperBound = false;
+                    break;
+                }
+            }
+        }
+    }
+    return upperBound;
+}
+function checkForLowerBound(arr) {
+    let lowerBound = true;
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i][i - 1] == 0) {
+            lowerBound = false;
+            break;
+        }
+        for (let j = 0; j < arr[i].length; j++) {
+            if ((j != i) && j != (i - 1)) {
+                if (arr[i][j] != 0) {
+                    lowerBound = false;
+                    break;
+                }
+            }
+        }
+    }
+    return lowerBound;
+}
+function biDiagnalMatrix() {
+    // if (matrixType != 'Square') return false;
+    let arr = main[0];
+    let bidiagnal = true;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i][i] == 0) {
+            bidiagnal = false;
+            break;
+        }
+
+        if (!bidiagnal) break;
+    }
+    return bidiagnal;
+}
+
+function func1() {
+    console.log(" func1 called");
+    return;
+}
+
+function func2() {
+    console.log(" func2 called");
 }
