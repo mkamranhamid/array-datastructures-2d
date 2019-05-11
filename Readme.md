@@ -10,7 +10,7 @@ No installing of this project is required
 
 ## Running the project
 
-To run the porject in your browser if you don't see any browser logo on the `index.html` file `right click` on the `index.html` file and in the `Open with` menu choose any browser.
+To run the project in your browser if you don't see any browser logo on the `index.html` file `right click` on the `index.html` file and in the `Open with` menu choose any browser.
 
 ## Acknowledgments
 
