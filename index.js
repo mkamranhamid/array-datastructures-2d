@@ -91,7 +91,10 @@ function calculateArrayLength(arr) {
 
 function insertIntoArray(indx) {
     console.log("insertIntoArray");
-    if (main[indx].length == 0) return;
+    if (main[indx].length == 0) {
+        alert("To insert into an array please perform 'Create Array' function first !!");
+        return;
+    };
     let cols = main[indx][0].length;
     let newArray = [...new Array(cols)].map((d, i) => {
         return i;
@@ -167,8 +170,10 @@ function searchInArray(indx, toSrch) {
     let col = document.getElementById(appconfig[indx][toSrch][1]).value;
     row = parseInt(row);
     col = parseInt(col);
-    if (!row) return;
-    if (!col) return;
+    if (!row || !col) {
+        alert('Either Row or Column not valid !!');
+        return;
+    };
     row = row;
     col = col;
     if (main[indx].length < row) {
@@ -334,6 +339,10 @@ function isMatrixZero(arr, matrixType) {
 }
 
 function rotateLeft(indx) {
+    if (main[indx].length < 2) {
+        alert("Can't perform action on the following array");
+        return;
+    }
     let localMainArr = main[indx].slice();
     for (let i = 0; i < localMainArr.length; i++) {
         let row = localMainArr[i].slice();
@@ -348,6 +357,10 @@ function rotateLeft(indx) {
 }
 
 function rotateRight(indx) {
+    if (main[indx].length < 2) {
+        alert("Can't perform action on the following array");
+        return;
+    }
     let localMainArr = main[indx].slice();
     for (let i = 0; i < localMainArr.length; i++) {
         let replaceArr = localMainArr[i].slice();
@@ -365,6 +378,10 @@ function rotateRight(indx) {
 function swapRow(indx, key) {
     let row1 = document.getElementById(appconfig[indx][key][0]).value;
     let row2 = document.getElementById(appconfig[indx][key][1]).value;
+    if (!row1 || !row2) {
+        alert('Either Row # 1 or Row # 2 is not valid !!');
+        return;
+    }
     row1 = parseInt(row1) - 1;
     row2 = parseInt(row2) - 1;
     if ((row1 > main[indx].length - 1) && (row2 > main[indx].length - 1)) {
@@ -386,6 +403,10 @@ function swapCol(indx, key) {
     let col1 = document.getElementById(appconfig[indx][key][1]).value;
     let row2 = document.getElementById(appconfig[indx][key][2]).value;
     let col2 = document.getElementById(appconfig[indx][key][3]).value;
+    if (!row1 || !row2 || !col1 || !col2) {
+        alert('Either Row # 1 or Row # 2 is not valid !!');
+        return;
+    }
     row1 = parseInt(row1) - 1;
     col1 = parseInt(col1) - 1;
     row2 = parseInt(row2) - 1;
